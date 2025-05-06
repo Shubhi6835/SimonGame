@@ -1,5 +1,6 @@
 var gamePatter;
 var randomNumber;
+var userClickedPattern  = [];
 function nextSequence()
 {     
    randomNumber = Math.floor((Math.random() * 4));    
@@ -33,6 +34,8 @@ gamePattern.push(randomChosenColour);
 
 $(document).ready(function() {
     $("#green").click(function() {
+        var userChosenColor = "green";
+        userClickedPattern.push(userChosenColor);
         $("#green").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/green.mp3');
         audio.play();
@@ -40,6 +43,8 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $("#red").click(function() {
+        var userChosenColor = "red";
+        userClickedPattern.push(userChosenColor);
         $("#red").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/red.mp3');
         audio.play();
@@ -48,6 +53,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $("#yellow").click(function() {
+        var userChosenColor = "yellow";
+        userClickedPattern.push(userChosenColor);
         $("#yellow").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/yellow.mp3');
         audio.play();
@@ -56,6 +63,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $("#blue").click(function() {
+        var userChosenColor = "blue";
+        userClickedPattern.push(userChosenColor);
         $("#blue").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/blue.mp3');
         audio.play();
