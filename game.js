@@ -12,54 +12,29 @@ function playSound(name)
     {
      case 0:
          randomChosenColour=buttonColors[0];
-         $(document).ready(function () {
-            $("body").one("click", function () {
               var audio = new Audio('./sounds/red.mp3');
               audio.play();
               console.log("inside case 0");
-            });
-          });
-          
          break;
      case 1:
-         randomChosenColour=buttonColors[1];
-         $(document).ready(function () {
-            $("body").one("click", function () {
               var audio = new Audio('./sounds/blue.mp3');
               audio.play();
               console.log("inside case 1");
-            });
-          });
-          
          break;  
      case 2:
-         randomChosenColour=buttonColors[2];
-         $(document).ready(function () {
-            $("body").one("click", function () {
               var audio = new Audio('./sounds/green.mp3');
               audio.play();
               console.log("inside case 2");
-            });
-          });
-          
          break;
      case 3:
-         randomChosenColour=buttonColors[3];
-         $(document).ready(function () {
-            $("body").one("click", function () {
               var audio = new Audio('./sounds/yellow.mp3');
               audio.play();
               console.log("inside case 3");
-            });
-          });
-          
          break;  
      default:
          console.log("Something went wrong inside playSound");
     }
 }
-
-
 
 function nextSequence()
 {     
