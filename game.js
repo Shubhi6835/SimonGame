@@ -36,6 +36,16 @@ function playSound(name)
     }
 }
 
+function animatePress(currentColor) {
+    var button = $("#" + currentColor);
+    button.addClass("pressed");
+  
+    setTimeout(function () {
+      button.removeClass("pressed");
+    }, 100); // removes the class after 100ms
+  }
+  
+
 function nextSequence()
 {     
    randomNumber = Math.floor((Math.random() * 4));    
@@ -49,6 +59,7 @@ gamePattern.push(randomChosenColour);
 $(document).ready(function() {
     $("#green").click(function() {
         var userChosenColor = this.id;
+        animatePress(userChosenColor);
         userClickedPattern.push(userChosenColor);
         $("#green").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/green.mp3');
@@ -59,7 +70,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#red").click(function() {
         var userChosenColor = this.id;
-        userClickedPattern.push(userChosenColor);
+        animatePress(userChosenColor);
         $("#red").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/red.mp3');
         audio.play();
@@ -70,6 +81,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#yellow").click(function() {
         var userChosenColor = this.id;
+        animatePress(userChosenColor);
         userClickedPattern.push(userChosenColor);
         $("#yellow").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/yellow.mp3');
@@ -81,6 +93,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#blue").click(function() {
         var userChosenColor = this.id;
+        animatePress(userChosenColor);
         userClickedPattern.push(userChosenColor);
         $("#blue").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/blue.mp3');
@@ -91,6 +104,12 @@ $(document).ready(function() {
 nextSequence();
 console.log(randomNumber);
 
+$(".btn").pressed(function() 
+{
+    var id = this.id;
+    animatePress(id);
+    console.log("inside pressed");
+});
 
 
 
