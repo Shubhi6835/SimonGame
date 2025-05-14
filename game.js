@@ -1,5 +1,6 @@
 var gamePattern = [];
 var randomNumber;
+var level = 1;
 var buttonColors = ["red", "blue", "green", "yellow"];
 var randomChosenColour;
 var userClickedPattern  = [];
@@ -48,6 +49,8 @@ function animatePress(currentColor) {
 
 function nextSequence()
 {     
+   level = level + 1;
+   $("h1").text("Level "+ level);
    randomNumber = Math.floor((Math.random() * 4));    
    console.log("Inside nextSequence");
    playSound(randomNumber);
@@ -64,7 +67,9 @@ $(document).ready(function() {
         $("#green").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/green.mp3');
         audio.play();
-        nextSequence();
+        setTimeout(function(){
+            nextSequence()}
+        ,1000) 
     });
 });
 $(document).ready(function() {
@@ -74,7 +79,9 @@ $(document).ready(function() {
         $("#red").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/red.mp3');
         audio.play();
-        nextSequence();
+        setTimeout(function(){
+            nextSequence()}
+        ,1000)
     });
 });
 
@@ -86,7 +93,9 @@ $(document).ready(function() {
         $("#yellow").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/yellow.mp3');
         audio.play();
-        nextSequence();
+        setTimeout(function(){
+            nextSequence()}
+        ,1000)
     });
 });
 
@@ -98,18 +107,25 @@ $(document).ready(function() {
         $("#blue").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/blue.mp3');
         audio.play();
-        nextSequence();
+        setTimeout(function(){
+            nextSequence()}
+        ,1000)
     });
 });
 nextSequence();
 console.log(randomNumber);
 
-$(".btn").pressed(function() 
-{
-    var id = this.id;
-    animatePress(id);
-    console.log("inside pressed");
-});
+$(document).keypress(function(event){
+    if($("h1").text()=="Press Any Key to Start")
+    {
+        $("h1").text("Level 1");
+        nextSequence();
+    }
+    else{
+          console.log("Key Already pressed");
+    }
+})
+
 
 
 
