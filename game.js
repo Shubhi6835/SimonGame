@@ -5,6 +5,10 @@ var buttonColors = ["red", "blue", "green", "yellow"];
 var randomChosenColour;
 var userClickedPattern  = [];
 
+function checkAnswer(currentLevel){
+    
+}
+
 function playSound(name)
 {   
     console.log("insidePlaySounds");
