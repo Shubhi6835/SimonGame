@@ -6,7 +6,7 @@ var randomChosenColour;
 var userClickedPattern  = [];
 
 function checkAnswer(currentLevel){
-    
+    console.log("I am here right now");
 }
 
 function playSound(name)
