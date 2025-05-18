@@ -1,9 +1,9 @@
 var gamePattern = [];
 var randomNumber;
-var level = 1;
+var level = 0;
 var buttonColors = ["red", "blue", "green", "yellow"];
-var randomChosenColour;
-var userClickedPattern  = [];
+var randomChosenColour = [];
+var userClickedPattern = [];
 
 function checkAnswer(currentLevel){
     console.log("I am here right now");
@@ -11,7 +11,6 @@ function checkAnswer(currentLevel){
 
 function playSound(name)
 {   
-    console.log("insidePlaySounds");
     var sound = name;
     switch(sound)
     {
@@ -19,22 +18,18 @@ function playSound(name)
          randomChosenColour=buttonColors[0];
               var audio = new Audio('./sounds/red.mp3');
               audio.play();
-              console.log("inside case 0");
          break;
      case 1:
               var audio = new Audio('./sounds/blue.mp3');
               audio.play();
-              console.log("inside case 1");
          break;  
      case 2:
               var audio = new Audio('./sounds/green.mp3');
               audio.play();
-              console.log("inside case 2");
          break;
      case 3:
               var audio = new Audio('./sounds/yellow.mp3');
               audio.play();
-              console.log("inside case 3");
          break;  
      default:
          console.log("Something went wrong inside playSound");
@@ -55,8 +50,9 @@ function nextSequence()
 {     
    level = level + 1;
    $("h1").text("Level "+ level);
-   randomNumber = Math.floor((Math.random() * 4));    
-   console.log("Inside nextSequence");
+   randomNumber = Math.floor((Math.random() * 4));
+   console.log(buttonColors[randomNumber]);
+   randomChosenColour = buttonColors[randomChosenColour];
    playSound(randomNumber);
 }
 
@@ -71,6 +67,7 @@ $(document).ready(function() {
         $("#green").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/green.mp3');
         audio.play();
+        checkAnswer(userClickedPattern.length-1);
         setTimeout(function(){
             nextSequence()}
         ,1000) 
@@ -80,9 +77,11 @@ $(document).ready(function() {
     $("#red").click(function() {
         var userChosenColor = this.id;
         animatePress(userChosenColor);
+        userClickedPattern.push(userChosenColor);
         $("#red").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/red.mp3');
         audio.play();
+        checkAnswer(userClickedPattern.length-1);
         setTimeout(function(){
             nextSequence()}
         ,1000)
@@ -97,6 +96,7 @@ $(document).ready(function() {
         $("#yellow").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/yellow.mp3');
         audio.play();
+        checkAnswer(userClickedPattern.length-1);
         setTimeout(function(){
             nextSequence()}
         ,1000)
@@ -111,24 +111,16 @@ $(document).ready(function() {
         $("#blue").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
         var audio = new Audio('./sounds/blue.mp3');
         audio.play();
+        checkAnswer(userClickedPattern.length-1);
         setTimeout(function(){
             nextSequence()}
         ,1000)
     });
 });
-nextSequence();
-console.log(randomNumber);
 
-$(document).keypress(function(event){
-    if($("h1").text()=="Press Any Key to Start")
-    {
-        $("h1").text("Level 1");
-        nextSequence();
-    }
-    else{
-          console.log("Key Already pressed");
-    }
-})
+
+
+
 
 
 
