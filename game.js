@@ -24,7 +24,7 @@ function checkAnswer(currentLevel){
         console.log("wrong");
   
         //1. In the sounds folder, there is a sound called wrong.mp3, play this sound if the user got one of the answers wrong.
-        playSound("./sounds/wrong.mp3");
+        playSound(4);
   
         //2. In the styles.css file, there is a class called "game-over", apply this class to the body of the website when the user gets one of the answers wrong and then remove it after 200 milliseconds.
         $("body").addClass("game-over");
@@ -40,9 +40,9 @@ function checkAnswer(currentLevel){
 }
 
 function startOver(){
- level=0;
+ level = 0;
  gamePattern = [];
- $("h1").text("Press Any Key to Start Game");
+ started = false;
 }
 //this is fine
 function playSound(name)
@@ -50,6 +50,9 @@ function playSound(name)
     var sound = name;
     switch(sound)
     {
+      case 4:
+             var audio = new Audio('./sounds/wrong.mp3');
+             audio.play();
      case 0:
          randomChosenColour=buttonColors[0];
               var audio = new Audio('./sounds/red.mp3');
@@ -66,7 +69,7 @@ function playSound(name)
      case 3:
               var audio = new Audio('./sounds/yellow.mp3');
               audio.play();
-         break;  
+         break; 
      default:
          console.log("Something went wrong inside playSound");
     }
@@ -101,8 +104,8 @@ $(document).ready(function() {
         var userChosenColor = this.id;
         animatePress(userChosenColor);
         userClickedPattern.push(userChosenColor);
-        playSound(2);
         checkAnswer(userClickedPattern.length-1);
+        playSound(2);
     });
 });
 $(document).ready(function() {
